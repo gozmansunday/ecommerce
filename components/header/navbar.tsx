@@ -4,13 +4,11 @@ import { Container } from "../shared/container";
 import { MainNav } from "./main-nav";
 import { NavbarActions } from "./navbar-actions";
 
-export const revalidate = 0;
-
 export const Navbar = async () => {
   const categories = await getCategories();
 
   return (
-    <header className="sticky top-0 border-b h-14 shadow">
+    <header className="sticky top-0 border-b h-14 shadow bg-white">
       <Container className="flex items-center gap-12 h-full">
         {/* <AppLogo /> */}
         <h3 className="text-xl font-extrabold">
