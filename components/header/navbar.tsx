@@ -8,7 +8,7 @@ export const Navbar = async () => {
   const categories = await getCategories();
 
   return (
-    <header className="sticky top-0 border-b h-14 shadow bg-white">
+    <header className="sticky top-0 z-50 border-b h-14 shadow bg-white">
       <Container className="flex items-center gap-12 h-full">
         {/* <AppLogo /> */}
         <h3 className="text-xl font-extrabold">
