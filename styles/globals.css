@@ -7,3 +7,12 @@ body,
 :root {
   height: 100%;
 }
+
+.scrollable-element {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.scrollable-element::-webkit-scrollbar {
+  display: none;
+}
