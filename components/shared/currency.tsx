@@ -1,26 +1,15 @@
-"use client";
-
+// Local Imports
+import { cn } from "@/lib/utils/cn";
 import { moneyFormatter } from "@/lib/utils/money";
-// Global Imports
-import { useEffect, useState } from "react";
 
 interface Props {
   price: string | number;
+  className?: string;
 };
 
-export const Currency = ({ price }: Props) => {
-  const [isMounted, setIsMounted] = useState(false);
-
-  useEffect(() => {
-    setIsMounted(true);
-  }, [isMounted]);
-
-  if (!isMounted) {
-    return null;
-  }
-
+export const Currency = ({ price, className }: Props) => {
   return (
-    <div className="font-bold text-xl md:text-2xl">
+    <div className={cn("font-bold text-xl md:text-2xl", className)}>
       {moneyFormatter.format(Number(price))}
     </div>
   );
