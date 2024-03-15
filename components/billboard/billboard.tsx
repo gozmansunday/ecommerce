@@ -5,7 +5,7 @@ interface Props {
 export const Billboard = ({ data }: Props) => {
   return (
     <div
-      className="relative bg-cover w-full overflow-hidden aspect-square rounded-xl md:rounded-2xl lg:rounded-3xl md:aspect-[2.8/1]"
+      className="relative bg-cover bg-center w-full overflow-hidden aspect-square rounded-xl md:rounded-2xl lg:rounded-3xl md:aspect-[2.8/1]"
       style={{
         backgroundImage: `url(${data?.imageUrl})`
       }}
