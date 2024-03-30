@@ -1,14 +1,16 @@
 // Global Imports
 import type { Metadata } from "next";
 import { Rethink_Sans } from "next/font/google";
+import NextTopLoader from "nextjs-toploader";
 import { ReactNode } from "react";
 import { Toaster } from "sonner";
 
 // Local Imports
 import { Footer } from "@/components/footer/footer";
-import { cn } from "@/lib/utils/cn";
-import "@/styles/globals.css";
 import { Navbar } from "@/components/header/navbar";
+import { cn } from "@/lib/utils/cn";
+import { ModalProvider } from "@/providers/modal-provider";
+import "@/styles/globals.css";
 
 // Metadata
 export const metadata: Metadata = {
@@ -29,6 +31,14 @@ const RootLayout = ({ children }: Props) => {
   return (
     <html lang="en" className={cn("", font.className)}>
       <body className="flex flex-col justify-between">
+        <ModalProvider />
+        <NextTopLoader
+          showSpinner={false}
+          height={3}
+          crawlSpeed={500}
+          speed={400}
+          color="#000000"
+        />
         <Toaster
           position="bottom-right"
           richColors={true}
