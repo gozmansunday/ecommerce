@@ -9,12 +9,17 @@ import { RiShoppingCartLine } from "react-icons/ri";
 import { Button } from "../ui/button";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious, type CarouselApi } from "../ui/carousel";
 import { GalleryInfo } from "./gallery-info";
+import { cn } from "@/lib/utils/cn";
 
 interface Props {
   product: Product;
+  type?: "page" | "modal";
 };
 
-export const GalleryCarousel = ({ product }: Props) => {
+export const GalleryCarousel = ({
+  product,
+  type = "page",
+}: Props) => {
   const [api, setApi] = useState<CarouselApi>();
   const [current, setCurrent] = useState(0);
   const [count, setCount] = useState(0);
@@ -31,7 +36,10 @@ export const GalleryCarousel = ({ product }: Props) => {
   }, [api]);
 
   return (
-    <div className="grid gap-4 pb-6 md:gap-6 lg:gap-8 lg:pb-8 lg:grid-cols-2 lg:items-start">
+    <div className={cn(
+      "grid gap-4 pb-6 md:gap-6 lg:gap-8 lg:pb-8 lg:grid-cols-2 lg:items-start",
+      type === "modal" && "pb-0 md:gap-4 lg:gap-4 lg:items-center lg:pb-0"
+    )}>
       {/* Carousel */}
       <Carousel
         setApi={setApi}
@@ -42,7 +50,10 @@ export const GalleryCarousel = ({ product }: Props) => {
             <CarouselItem key={image.id}>
               <div
                 key={image.id}
-                className="relative w-full aspect-[3/2] rounded-xl overflow-hidden bg-neutral-200 shadow border lg:aspect-[4/3] lg:rounded-2xl"
+                className={cn(
+                  "relative w-full aspect-[3/2] rounded-xl overflow-hidden bg-neutral-200 shadow border lg:aspect-[4/3] lg:rounded-2xl",
+                  type === "modal" && "lg:aspect-[3/2] lg:rounded-xl"
+                )}
               >
                 <Image
                   src={image.url}
@@ -66,6 +77,7 @@ export const GalleryCarousel = ({ product }: Props) => {
           {/* Info */}
           <GalleryInfo
             product={product}
+            type={type}
           />
 
           <Button

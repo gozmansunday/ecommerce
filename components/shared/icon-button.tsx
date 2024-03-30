@@ -1,7 +1,7 @@
 "use client";
 
 // Global Imports
-import { ReactNode } from "react";
+import { MouseEventHandler, ReactNode } from "react";
 
 // Local Imports
 import { cn } from "@/lib/utils/cn";
@@ -9,7 +9,7 @@ import { Button } from "../ui/button";
 
 interface Props {
   children: ReactNode;
-  onClick: () => void;
+  onClick: MouseEventHandler<HTMLButtonElement>;
   hiddenOnMobile?: boolean;
 };
 
@@ -20,8 +20,8 @@ export const IconButton = ({
 }: Props) => {
   return (
     <Button
-      onClick={(x) => {}}
-      size={"lgIcon"}
+      onClick={onClick}
+      size={"icon"}
       className={cn(
         "rounded-full shadow bg-white text-black hover:bg-white/90",
         hiddenOnMobile && "hidden lg:inline-flex"

@@ -1,3 +1,6 @@
+// Global Imports
+import Link from "next/link";
+
 // Local Imports
 import { getCategories } from "@/actions/get-categories";
 import { Container } from "../shared/container";
@@ -11,9 +14,9 @@ export const Navbar = async () => {
     <header className="sticky top-0 z-50 border-b h-14 shadow bg-white">
       <Container className="flex items-center gap-12 h-full">
         {/* <AppLogo /> */}
-        <h3 className="text-xl font-extrabold">
+        <Link href={"/"} className="text-xl font-extrabold">
           STORE
-        </h3>
+        </Link>
 
         <MainNav data={categories} />
 
