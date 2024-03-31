@@ -2,18 +2,18 @@
 
 import { useMediaQuery } from "@/hooks/useMediaQuery";
 // Global Imports
+import { useBag } from "@/hooks/useBag";
 import Image from "next/image";
 import { RiCloseCircleLine } from "react-icons/ri";
 import { Currency } from "../shared/currency";
-import { useCart } from "@/hooks/useCart";
 
 interface Props {
   item: Product;
 };
 
-export const CartItem = ({ item }: Props) => {
+export const BagItem = ({ item }: Props) => {
   const isDesktop = useMediaQuery("(min-width: 768px)");
-  const cart = useCart();
+  const bag = useBag();
 
   return (
     <div className="flex gap-4">
@@ -28,7 +28,7 @@ export const CartItem = ({ item }: Props) => {
 
       <div className="flex flex-col justify-between gap-3 w-full">
         <div
-          onClick={() => cart.removeItem(item.id)}
+          onClick={() => bag.removeItem(item.id)}
           role="button"
           className="self-start text-neutral-600"
         >
