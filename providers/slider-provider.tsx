@@ -4,9 +4,9 @@
 import { useEffect, useState } from "react";
 
 // Local Imports
-import { PreviewModal } from "@/components/products/preview-modal";
+import { CartSlider } from "@/components/cart/cart-slider";
 
-export const ModalProvider = () => {
+export const SliderProvider = () => {
   const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
@@ -19,7 +19,7 @@ export const ModalProvider = () => {
 
   return (
     <>
-      <PreviewModal />
+      <CartSlider />
     </>
   );
 };
