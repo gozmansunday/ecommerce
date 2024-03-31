@@ -2,14 +2,15 @@
 
 // Global Imports
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { MouseEventHandler, useEffect, useState } from "react";
 import { RiShoppingCartLine } from "react-icons/ri";
 
 // Local Imports
+import { useCart } from "@/hooks/useCart";
+import { cn } from "@/lib/utils/cn";
 import { Button } from "../ui/button";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious, type CarouselApi } from "../ui/carousel";
 import { GalleryInfo } from "./gallery-info";
-import { cn } from "@/lib/utils/cn";
 
 interface Props {
   product: Product;
@@ -23,6 +24,13 @@ export const GalleryCarousel = ({
   const [api, setApi] = useState<CarouselApi>();
   const [current, setCurrent] = useState(0);
   const [count, setCount] = useState(0);
+
+  const cart = useCart();
+
+  const onAddToCart: MouseEventHandler<HTMLButtonElement> = (event) => {
+    event.stopPropagation();
+    cart.addItem(product);
+  };
 
   useEffect(() => {
     if (!api) return;
@@ -38,7 +46,7 @@ export const GalleryCarousel = ({
   return (
     <div className={cn(
       "grid gap-4 pb-6 md:gap-6 lg:gap-8 lg:pb-8 lg:grid-cols-2 lg:items-start",
-      type === "modal" && "pb-0 md:gap-4 lg:gap-4 lg:items-center lg:pb-0"
+      type === "modal" && "pb-0 md:gap-4 md:grid-cols-2 md:items-center lg:gap-4 lg:items-center lg:pb-0"
     )}>
       {/* Carousel */}
       <Carousel
@@ -81,6 +89,7 @@ export const GalleryCarousel = ({
           />
 
           <Button
+            onClick={onAddToCart}
             size={"xl"}
             className="gap-2 text-base"
           >

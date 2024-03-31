@@ -2,7 +2,7 @@
 
 import { usePreviewModal } from "@/hooks/useModal";
 import { GalleryCarousel } from "../gallery/gallery-carousel";
-import { Modal } from "./modal";
+import { Modal } from "../modals/modal";
 
 export const PreviewModal = () => {
   const previewModal = usePreviewModal();

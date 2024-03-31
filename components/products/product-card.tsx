@@ -7,6 +7,7 @@ import { MouseEventHandler } from "react";
 import { TbArrowsMaximize, TbShoppingBagPlus } from "react-icons/tb";
 
 // Local Imports
+import { useCart } from "@/hooks/useCart";
 import { usePreviewModal } from "@/hooks/useModal";
 import { Currency } from "../shared/currency";
 import { IconButton } from "../shared/icon-button";
@@ -17,11 +18,18 @@ interface Props {
 
 export const ProductCard = ({ data }: Props) => {
   const router = useRouter();
+
   const previewModal = usePreviewModal();
+  const cart = useCart();
 
   const onPreview: MouseEventHandler<HTMLButtonElement> = (event) => {
     event.stopPropagation();
     previewModal.onOpen(data);
+  };
+
+  const onAddToCart: MouseEventHandler<HTMLButtonElement> = (event) => {
+    event.stopPropagation();
+    cart.addItem(data);
   };
 
   return (
@@ -50,7 +58,7 @@ export const ProductCard = ({ data }: Props) => {
               />
             </IconButton>
             <IconButton
-              onClick={() => { }}
+              onClick={onAddToCart}
             >
               <TbShoppingBagPlus
                 size={20}

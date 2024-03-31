@@ -1,14 +1,19 @@
 "use client";
 
 // Global Imports
+import { useEffect, useState } from "react";
 import { RiShoppingBag2Line } from "react-icons/ri";
-import { useState, useEffect } from "react";
 
 // Local Imports
+import { useCart } from "@/hooks/useCart";
+import { useCartSlider } from "@/hooks/useSlider";
 import { Button } from "../ui/button";
 
 export const NavbarActions = () => {
   const [isMounted, setIsMounted] = useState(false);
+
+  const cart = useCart();
+  const cartSlider = useCartSlider();
 
   useEffect(() => {
     setIsMounted(true);
@@ -21,11 +26,14 @@ export const NavbarActions = () => {
   return (
     <div className="ml-auto flex items-center">
       <Button
+        onClick={() => cartSlider.onOpen()}
         size={"custom"}
         className="gap-2"
       >
         <RiShoppingBag2Line size={22} />
-        <span className="text-lg">0</span>
+        <span className="text-lg">
+          {cart.items.length}
+        </span>
       </Button>
     </div>
   );

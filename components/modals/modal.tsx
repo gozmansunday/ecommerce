@@ -82,6 +82,5 @@ export const Modal = ({
         <DrawerFooter />
       </DrawerContent>
     </Drawer>
-
   );
 };
