@@ -10,6 +10,7 @@ import { Footer } from "@/components/footer/footer";
 import { Navbar } from "@/components/header/navbar";
 import { cn } from "@/lib/utils/cn";
 import { ModalProvider } from "@/providers/modal-provider";
+import { SliderProvider } from "@/providers/slider-provider";
 import "@/styles/globals.css";
 
 // Metadata
@@ -32,6 +33,7 @@ const RootLayout = ({ children }: Props) => {
     <html lang="en" className={cn("", font.className)}>
       <body className="flex flex-col justify-between">
         <ModalProvider />
+        <SliderProvider />
         <NextTopLoader
           showSpinner={false}
           height={3}
@@ -41,9 +43,10 @@ const RootLayout = ({ children }: Props) => {
         />
         <Toaster
           position="bottom-right"
-          richColors={true}
+          richColors
           visibleToasts={3}
           duration={3000}
+          closeButton
         />
         <div>
           <Navbar />
