@@ -5,15 +5,15 @@ import { useEffect, useState } from "react";
 import { RiShoppingBag2Line } from "react-icons/ri";
 
 // Local Imports
-import { useCart } from "@/hooks/useCart";
-import { useCartSlider } from "@/hooks/useSlider";
+import { useBag } from "@/hooks/useBag";
+import { useBagSlider } from "@/hooks/useSlider";
 import { Button } from "../ui/button";
 
 export const NavbarActions = () => {
   const [isMounted, setIsMounted] = useState(false);
 
-  const cart = useCart();
-  const cartSlider = useCartSlider();
+  const bag = useBag();
+  const bagSlider = useBagSlider();
 
   useEffect(() => {
     setIsMounted(true);
@@ -26,13 +26,13 @@ export const NavbarActions = () => {
   return (
     <div className="ml-auto flex items-center">
       <Button
-        onClick={() => cartSlider.onOpen()}
+        onClick={() => bagSlider.onOpen()}
         size={"custom"}
         className="gap-2"
       >
         <RiShoppingBag2Line size={22} />
         <span className="text-lg">
-          {cart.items.length}
+          {bag.items.length}
         </span>
       </Button>
     </div>

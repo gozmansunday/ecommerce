@@ -35,7 +35,7 @@ export const Slider = ({
     <Sheet open={isOpen} onOpenChange={onChange}>
       <SheetContent className="flex flex-col overflow-auto">
         {(title || description) && (
-          <SheetHeader className={cn("sticky top-0 z-50 border-b-2 border-black bg-inherit shadow p-6", headerClassName)}>
+          <SheetHeader className={cn("sticky top-0 z-50 border-b border-black bg-inherit shadow p-6", headerClassName)}>
             {title && (
               <SheetTitle className="flex items-center justify-between text-2xl font-bold md:text-3xl">
                 <span>{title}</span>

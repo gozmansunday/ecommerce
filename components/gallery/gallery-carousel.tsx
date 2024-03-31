@@ -3,10 +3,10 @@
 // Global Imports
 import Image from "next/image";
 import { MouseEventHandler, useEffect, useState } from "react";
-import { RiShoppingCartLine } from "react-icons/ri";
+import { RiShoppingBag2Line } from "react-icons/ri";
 
 // Local Imports
-import { useCart } from "@/hooks/useCart";
+import { useBag } from "@/hooks/useBag";
 import { cn } from "@/lib/utils/cn";
 import { Button } from "../ui/button";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious, type CarouselApi } from "../ui/carousel";
@@ -25,11 +25,11 @@ export const GalleryCarousel = ({
   const [current, setCurrent] = useState(0);
   const [count, setCount] = useState(0);
 
-  const cart = useCart();
+  const bag = useBag();
 
-  const onAddToCart: MouseEventHandler<HTMLButtonElement> = (event) => {
+  const onAddToBag: MouseEventHandler<HTMLButtonElement> = (event) => {
     event.stopPropagation();
-    cart.addItem(product);
+    bag.addItem(product);
   };
 
   useEffect(() => {
@@ -89,14 +89,12 @@ export const GalleryCarousel = ({
           />
 
           <Button
-            onClick={onAddToCart}
+            onClick={onAddToBag}
             size={"xl"}
-            className="gap-2 text-base"
+            className="gap-2 text-base rounded-full"
           >
-            <span>Add To Cart</span>
-            <RiShoppingCartLine
-              size={24}
-            />
+            <span>Add To Bag</span>
+            <RiShoppingBag2Line size={24} />
           </Button>
         </div>
       </div>
