@@ -1,13 +1,13 @@
 import { create } from "zustand";
 
-interface CartSliderState {
+interface BagSliderState {
   isOpen: boolean;
   onOpen: () => void;
   onClose: () => void;
   data?: Product;
 };
 
-export const useCartSlider = create<CartSliderState>()((set) => ({
+export const useBagSlider = create<BagSliderState>()((set) => ({
   isOpen: false,
   data: undefined,
   onOpen: () => set(() => ({ isOpen: true })),

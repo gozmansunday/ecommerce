@@ -4,7 +4,7 @@
 import { useEffect, useState } from "react";
 
 // Local Imports
-import { CartSlider } from "@/components/cart/cart-slider";
+import { BagSlider } from "@/components/bag/bag-slider";
 
 export const SliderProvider = () => {
   const [isMounted, setIsMounted] = useState(false);
@@ -19,7 +19,7 @@ export const SliderProvider = () => {
 
   return (
     <>
-      <CartSlider />
+      <BagSlider />
     </>
   );
 };
