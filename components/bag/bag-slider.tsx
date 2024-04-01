@@ -1,14 +1,14 @@
 "use client";
 
 // Global Imports
-import axios from "axios";
-import { useSearchParams } from "next/navigation";
-import { useEffect } from "react";
+import { useMutation } from "@tanstack/react-query";
+import { RiLoader2Fill } from "react-icons/ri";
 import { toast } from "sonner";
 
 // Local Imports
 import { useBag } from "@/hooks/useBag";
 import { useBagSlider } from "@/hooks/useSlider";
+import { checkout } from "@/lib/api/checkout";
 import { Currency } from "../shared/currency";
 import { NoItems } from "../shared/no-items";
 import { Slider } from "../sliders/slider";
@@ -16,8 +16,6 @@ import { Button } from "../ui/button";
 import { BagItem } from "./bag-item";
 
 export const BagSlider = () => {
-  const searchParams = useSearchParams();
-
   const bagSlider = useBagSlider();
   const { items: bagItems, removeAll } = useBag();
 
@@ -25,24 +23,21 @@ export const BagSlider = () => {
     total + Number(item.price)
   ), 0);
 
-  const onCheckout = async () => {
-    const response = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/checkout`, {
-      productIds: bagItems.map((item) => item.id),
-    });
-
-    window.location = response.data.url;
-  };
-
-  useEffect(() => {
-    if (searchParams.get("success")) {
-      toast.success("Payment complete.");
-      removeAll();
-    }
-
-    if (searchParams.get("canceled")) {
+  const checkoutMutation = useMutation({
+    mutationFn: checkout,
+    onSuccess: (data) => {
+      window.location = data.url;
+    },
+    onError: (error) => {
       toast.error("Something went wrong!");
     }
-  }, [searchParams, removeAll]);
+  });
+
+  const onCheckout = () => {
+    checkoutMutation.mutate({
+      productIds: bagItems.map((item) => item.id),
+    });
+  };
 
   return (
     <Slider
@@ -87,10 +82,18 @@ export const BagSlider = () => {
 
           <Button
             onClick={onCheckout}
+            disabled={!bagItems.length || checkoutMutation.isPending}
             size={"xl"}
             className="w-full text-base rounded-full"
           >
-            Continue To Checkout
+            {checkoutMutation.isPending ? (
+              <RiLoader2Fill
+                size={30}
+                className="animate-spin"
+              />
+            ) : (
+              <span>Continue To Checkout</span>
+            )}
           </Button>
         </div>
       </div>
