@@ -9,7 +9,9 @@ import { Toaster } from "sonner";
 import { Footer } from "@/components/footer/footer";
 import { Navbar } from "@/components/header/navbar";
 import { cn } from "@/lib/utils/cn";
+import { CheckPaymentProvider } from "@/providers/check-payment-provider";
 import { ModalProvider } from "@/providers/modal-provider";
+import QueryProvider from "@/providers/query-provider";
 import { SliderProvider } from "@/providers/slider-provider";
 import "@/styles/globals.css";
 
@@ -32,27 +34,31 @@ const RootLayout = ({ children }: Props) => {
   return (
     <html lang="en" className={cn("", font.className)}>
       <body className="flex flex-col justify-between">
-        <ModalProvider />
-        <SliderProvider />
-        <NextTopLoader
-          showSpinner={false}
-          height={3}
-          crawlSpeed={500}
-          speed={400}
-          color="#000000"
-        />
-        <Toaster
-          position="bottom-right"
-          richColors
-          visibleToasts={3}
-          duration={3000}
-          closeButton
-        />
-        <div>
-          <Navbar />
-          {children}
-        </div>
-        <Footer />
+        <QueryProvider>
+          <CheckPaymentProvider>
+            <ModalProvider />
+            <SliderProvider />
+            <NextTopLoader
+              showSpinner={false}
+              height={3}
+              crawlSpeed={500}
+              speed={400}
+              color="#000000"
+            />
+            <Toaster
+              position="bottom-right"
+              richColors
+              visibleToasts={3}
+              duration={3000}
+              closeButton
+            />
+            <div>
+              <Navbar />
+              {children}
+            </div>
+            <Footer />
+          </CheckPaymentProvider>
+        </QueryProvider>
       </body>
     </html>
   );
