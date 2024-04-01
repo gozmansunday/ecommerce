@@ -21,7 +21,7 @@ export const MainNav = ({ data }: Props) => {
   }));
 
   return (
-    <nav className="hidden items-center gap-3 md:flex lg:gap-5">
+    <nav className="flex items-center gap-3 lg:gap-5">
       {routes.map((route) => (
         <Link
           key={route.href}
@@ -34,6 +34,10 @@ export const MainNav = ({ data }: Props) => {
           {route.label}
         </Link>
       ))}
+
+      {/* FOR ADDING SPACE TO THE END OF THE NAVBAR IN MOBILE SCREENS */}
+      {/* DO NOT REMOVE!!! */}
+      <span className="invisible">a</span>
     </nav>
   );
 };
