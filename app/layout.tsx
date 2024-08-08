@@ -1,4 +1,4 @@
-// Global Imports
+// External Imports
 import type { Metadata } from "next";
 import { Rethink_Sans } from "next/font/google";
 import NextTopLoader from "nextjs-toploader";
@@ -9,7 +9,7 @@ import { Toaster } from "sonner";
 import { Footer } from "@/components/footer/footer";
 import { Navbar } from "@/components/header/navbar";
 import { cn } from "@/lib/utils/cn";
-import { CheckPaymentProvider } from "@/providers/check-payment-provider";
+import { CheckPaymentProviderSuspense } from "@/providers/check-payment-provider-suspense";
 import { ModalProvider } from "@/providers/modal-provider";
 import QueryProvider from "@/providers/query-provider";
 import { SliderProvider } from "@/providers/slider-provider";
@@ -35,7 +35,7 @@ const RootLayout = ({ children }: Props) => {
     <html lang="en" className={cn("", font.className)}>
       <body className="flex flex-col justify-between">
         <QueryProvider>
-          <CheckPaymentProvider>
+          <CheckPaymentProviderSuspense>
             <ModalProvider />
             <SliderProvider />
             <NextTopLoader
@@ -57,7 +57,7 @@ const RootLayout = ({ children }: Props) => {
               {children}
             </div>
             <Footer />
-          </CheckPaymentProvider>
+          </CheckPaymentProviderSuspense>
         </QueryProvider>
       </body>
     </html>

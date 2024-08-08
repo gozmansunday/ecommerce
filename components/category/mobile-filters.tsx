@@ -1,4 +1,4 @@
-// Global Imports
+// External Imports
 import { RiFilter3Fill } from "react-icons/ri";
 
 // Local Imports

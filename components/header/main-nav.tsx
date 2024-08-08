@@ -1,6 +1,6 @@
 "use client";
 
-// Global Imports
+// External Imports
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 

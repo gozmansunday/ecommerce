@@ -1,6 +1,6 @@
 "use client";
 
-// Global Imports
+// External Imports
 import Image from "next/image";
 import { MouseEventHandler, useEffect, useState } from "react";
 import { RiShoppingBag2Line } from "react-icons/ri";

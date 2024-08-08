@@ -1,4 +1,4 @@
-// Global Imports
+// External Imports
 import qs from "query-string";
 
 interface Query {

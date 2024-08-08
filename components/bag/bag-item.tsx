@@ -1,7 +1,7 @@
 "use client";
 
 import { useMediaQuery } from "@/hooks/useMediaQuery";
-// Global Imports
+// External Imports
 import { useBag } from "@/hooks/useBag";
 import Image from "next/image";
 import { RiCloseCircleLine } from "react-icons/ri";

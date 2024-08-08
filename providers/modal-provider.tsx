@@ -1,6 +1,6 @@
 "use client";
 
-// Global Imports
+// External Imports
 import { useEffect, useState } from "react";
 
 // Local Imports

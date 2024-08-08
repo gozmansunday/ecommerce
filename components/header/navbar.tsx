@@ -1,4 +1,4 @@
-// Global Imports
+// External Imports
 import Link from "next/link";
 
 // Local Imports

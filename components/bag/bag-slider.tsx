@@ -1,6 +1,6 @@
 "use client";
 
-// Global Imports
+// External Imports
 import { useMutation } from "@tanstack/react-query";
 import { RiLoader2Fill } from "react-icons/ri";
 import { toast } from "sonner";

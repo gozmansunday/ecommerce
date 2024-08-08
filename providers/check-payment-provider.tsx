@@ -1,6 +1,6 @@
 "use client";
 
-// Global Imports
+// External Imports
 import { useSearchParams } from "next/navigation";
 import { ReactNode, useEffect } from "react";
 import { toast } from "sonner";

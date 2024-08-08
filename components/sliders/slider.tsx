@@ -1,6 +1,6 @@
 "use client";
 
-// Global Imports
+// External Imports
 import { ReactNode } from "react";
 import { RiCloseFill } from "react-icons/ri";
 

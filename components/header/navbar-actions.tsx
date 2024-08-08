@@ -1,6 +1,6 @@
 "use client";
 
-// Global Imports
+// External Imports
 import { useEffect, useState } from "react";
 import { RiShoppingBag2Line } from "react-icons/ri";
 

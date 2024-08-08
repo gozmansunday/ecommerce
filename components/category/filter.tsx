@@ -1,6 +1,6 @@
 "use client";
 
-// Global Imports
+// External Imports
 import { useRouter, useSearchParams } from "next/navigation";
 import qs from "query-string";
 

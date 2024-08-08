@@ -1,4 +1,4 @@
-// Global Imports
+// External Imports
 import { cn } from "@/lib/utils/cn";
 import { ReactNode } from "react";
 
