@@ -1,0 +1,19 @@
+services:
+  e-commerce:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: runner
+    image: e-commerce:production
+    container_name: e-commerce-production
+    ports:
+      - "3002:3002"
+    environment:
+      - NODE_ENV=production
+    restart: unless-stopped
+    networks:
+      - e-commerce-network
+
+networks:
+  e-commerce-network:
+    driver: bridge
